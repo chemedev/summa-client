@@ -1,0 +1,73 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  font-family: sans-serif;
+  user-select: none;
+}
+
+body {
+  display: flex;
+  flex-flow: column;
+  margin: 0 auto;
+  min-height: 100vh;
+  max-width: 640px;
+}
+
+.app {
+  min-height: 100vh;
+  background-color: $color-background;
+}
+
+.app-Header {
+  align-items: center;
+  background-color: $color-background;
+  color: $color-accents;
+  display: flex;
+  flex-direction: column;
+  font-size: calc(10px + 2vmin);
+  justify-content: center;
+}
+
+.error {
+  background-color: $color-errors;
+  color: $color-accents;
+  font-weight: bold;
+  height: 30px;
+  line-height: 30px;
+  margin: 0 auto 5px auto;
+  opacity: 0;
+  text-align: center;
+  transition: 0.3s ease;
+  width: 95%;
+  @include modifier('show') {
+    opacity: 1;
+  }
+}
+
+.btn {
+  cursor: pointer;
+  text-decoration: none;
+  @include element('home') {
+    color: $color-accents;
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0.67em 0;
+  }
+  @include element('employees') {
+    background-color: $color-primary;
+    color: $color-accents;
+    display: block;
+    margin: 0 auto 5px auto;
+    padding: 5px 0;
+    text-align: center;
+    width: 95%;
+    &:hover {
+      background-color: lighten($color: $color-primary, $amount: 10);
+    }
+  }
+}
