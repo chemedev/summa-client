@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import List from './List'
 import Header from './Header'
+import EmployeeForm from './EmployeeForm'
 
 function App() {
   const [error, setError] = useState('')
@@ -38,6 +39,28 @@ function App() {
                 setEmployees={setEmployees}
                 setAgeAverage={setAgeAverage}
                 averageAge={ageAverage}
+                {...props}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/employees/:id/edit"
+            render={props => (
+              <EmployeeForm
+                employees={employees}
+                updateEmployee={true}
+                setError={setError}
+                {...props}
+              />
+            )}
+          />
+          <Route
+            path="/employees/add"
+            render={props => (
+              <EmployeeForm
+                updateEmployee={false}
+                setError={setError}
                 {...props}
               />
             )}

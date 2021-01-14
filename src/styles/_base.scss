@@ -178,3 +178,58 @@ body {
 .employee-list__item:nth-child(odd) .employee-list__id--strip {
   background-color: lighten($color: $color-accents, $amount: 100);
 }
+
+.form-Employee {
+  background-color: $color-primary;
+  margin: 0 auto;
+  padding: 1em 0;
+  width: 95%;
+
+  @include element('label') {
+    color: $color-accents;
+    display: block;
+    height: 30px;
+    letter-spacing: 2px;
+    line-height: 30px;
+    margin: 10px auto 0 auto;
+    padding-left: 3px;
+    width: 50%;
+  }
+  @include element('input-text') {
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+  }
+  @include element('wrapper') {
+    display: flex;
+    margin: 0 auto;
+    width: 50%;
+  }
+  @include element('radio') {
+    background-color: $color-accents;
+    color: $color-background;
+    height: 30px;
+    line-height: 30px;
+    margin: 0 auto;
+    text-align: center;
+    width: 50%;
+  }
+  @include element('select') {
+    display: block;
+    margin: 0 auto;
+  }
+  @include element('submit') {
+    display: block;
+    font-weight: bold;
+    margin: 5em auto 0 auto;
+  }
+}
+
+.form-Employee__radio:hover {
+  background-color: lighten($color: $color-primary, $amount: 25);
+}
+
+input[type='radio']:checked + .form-Employee__radio {
+  background-color: darken($color: $color-primary, $amount: 10);
+  color: $color-accents;
+}
