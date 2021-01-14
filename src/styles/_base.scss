@@ -247,7 +247,6 @@ input[type='radio']:checked + .form-Employee__radio {
   background-color: $color-primary;
   border-radius: 4px;
   color: $color-accents;
-  height: 150px;
   margin: 0 auto;
   padding: 10px 20px;
   width: 60%;
@@ -278,5 +277,28 @@ input[type='radio']:checked + .form-Employee__radio {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 640px) {
+  .form-Employee {
+    @include element('label') {
+      width: 75%;
+    }
+    @include element('input-text') {
+      width: 75%;
+    }
+    @include element('wrapper') {
+      width: 75%;
+    }
+    @include element('radio') {
+      width: 75%;
+    }
+    @include element('select') {
+      width: 75%;
+    }
+    @include element('submit') {
+      width: 75%;
+    }
   }
 }

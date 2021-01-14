@@ -86,7 +86,7 @@ const Filter = ({ setError, setEmployees, setAgeAverage }) => {
           className="form-Filter__radio"
         />
         <label className="btn form-Filter__label" htmlFor="designer">
-          🎨 Diseñadores
+          🎨 Disñr
         </label>
         <input
           hidden
@@ -98,7 +98,7 @@ const Filter = ({ setError, setEmployees, setAgeAverage }) => {
           className="form-Filter__radio"
         />
         <label className="btn form-Filter__label" htmlFor="developer">
-          👨‍💻 Desarrolladores
+          👨‍💻 Devs
         </label>
       </div>
       <div className="form-Filter__container">
