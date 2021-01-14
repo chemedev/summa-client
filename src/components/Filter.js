@@ -71,8 +71,9 @@ const Filter = ({ setError, setEmployees, setAgeAverage }) => {
           checked={option === 0}
           name="role"
           onChange={() => handleChange(0)}
+          className="form-Filter__radio"
         />
-        <label className="btn form-Filter__radio" htmlFor="all">
+        <label className="btn form-Filter__label" htmlFor="all">
           👥 Todos
         </label>
         <input
@@ -82,8 +83,9 @@ const Filter = ({ setError, setEmployees, setAgeAverage }) => {
           name="role"
           checked={option === 1}
           onChange={() => handleChange(1)}
+          className="form-Filter__radio"
         />
-        <label className="btn form-Filter__radio" htmlFor="designer">
+        <label className="btn form-Filter__label" htmlFor="designer">
           🎨 Diseñadores
         </label>
         <input
@@ -93,8 +95,9 @@ const Filter = ({ setError, setEmployees, setAgeAverage }) => {
           name="role"
           checked={option === 2}
           onChange={() => handleChange(2)}
+          className="form-Filter__radio"
         />
-        <label className="btn form-Filter__radio" htmlFor="developer">
+        <label className="btn form-Filter__label" htmlFor="developer">
           👨‍💻 Desarrolladores
         </label>
       </div>

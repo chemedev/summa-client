@@ -1,19 +1,28 @@
-import { Link } from 'react-router-dom'
+import { Link, useRouteMatch } from 'react-router-dom'
 
 import Error from './Error'
 
 const Header = ({ error }) => {
+  const CustomLink = ({ exact, to, classes, children }) => {
+    const match = useRouteMatch({ exact, path: to })
+    return (
+      <Link className={match ? `${classes} btn--active` : classes} to={to}>
+        {children}
+      </Link>
+    )
+  }
+
   return (
     <header className="app-Header">
       <Link to="/" className="btn btn__home">
         Corp 💼
       </Link>
-      <Link to="/employees/add" className="btn btn__employees">
+      <CustomLink exact to="/employees/add" classes="btn btn__employees">
         Enrolar empleado
-      </Link>
-      <Link to="/" className="btn btn__employees">
+      </CustomLink>
+      <CustomLink exact to="/" classes="btn btn__employees">
         Listar empleados
-      </Link>
+      </CustomLink>
       <Error error={error} />
     </header>
   )

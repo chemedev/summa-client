@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
-import List from './List'
-import EmployeeForm from './EmployeeForm'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import Details from './Details'
+
+import List from './List'
 import Header from './Header'
+import Details from './Details'
+import EmployeeForm from './EmployeeForm'
 
 function App() {
   const [employees, setEmployees] = useState([])
