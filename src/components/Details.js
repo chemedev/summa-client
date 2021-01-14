@@ -43,10 +43,8 @@ const Details = ({ setError, ...props }) => {
 
   if (!employee.id) return <Spinner />
 
-  const role = employee.roleId === 1 ? 'Diseñador' : 'Desarrollador'
-
   const activity = roles[employee.typeId - 1]
-
+  const role = employee.roleId === 1 ? 'Diseñador' : 'Desarrollador'
   return (
     <div className="details-Container">
       <p className="details-Container__title">
