@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
-
 import List from './List'
-import Header from './Header'
 import EmployeeForm from './EmployeeForm'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import Details from './Details'
+import Header from './Header'
 
 function App() {
-  const [error, setError] = useState('')
   const [employees, setEmployees] = useState([])
+  const [error, setError] = useState('')
   const [ageAverage, setAgeAverage] = useState(0)
 
   useEffect(() => {
@@ -26,7 +26,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="App">
+      <div className="app">
         <Header error={error} />
         <Switch>
           <Route
@@ -42,6 +42,11 @@ function App() {
                 {...props}
               />
             )}
+          />
+          <Route
+            exact
+            path="/employees/:id/details"
+            render={props => <Details setError={setError} {...props} />}
           />
           <Route
             exact
