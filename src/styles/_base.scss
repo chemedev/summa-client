@@ -18,6 +18,22 @@ body {
   max-width: 640px;
 }
 
+.select {
+  appearance: none;
+  background-color: $color-accents;
+  height: 30px;
+  padding: 0 10px;
+  width: 50%;
+  &:hover {
+    background-color: darken($color: $color-accents, $amount: 3);
+  }
+}
+
+.submit {
+  height: 30px;
+  width: 50%;
+}
+
 .app {
   min-height: 100vh;
   background-color: $color-background;
@@ -70,4 +86,95 @@ body {
       background-color: lighten($color: $color-primary, $amount: 10);
     }
   }
+}
+
+.form-Filter {
+  background-color: $color-primary;
+  color: $color-accents;
+  display: block;
+  margin: 0 auto;
+  padding: 5px;
+  width: 95%;
+  @include element('container') {
+    align-items: center;
+    display: flex;
+    height: 30px;
+    justify-content: space-around;
+    &:first-child {
+      margin-bottom: 5px;
+    }
+  }
+  @include element('radio') {
+    height: 100%;
+    line-height: 30px;
+    text-align: center;
+    width: 100%;
+    &:hover {
+      background-color: lighten($color: $color-primary, $amount: 10);
+    }
+  }
+}
+
+.employee-list {
+  background-color: $color-primary;
+  color: $color-accents;
+  list-style-type: none;
+  margin: 0 auto;
+  padding-left: 0;
+  width: 95%;
+  @include element('item') {
+    height: 35px;
+    line-height: 35px;
+    width: 100%;
+    @include modifier('avg') {
+      border-top: 10px solid $color-background;
+      box-sizing: content-box;
+      font-weight: bold;
+    }
+  }
+  @include element('id') {
+    background-color: $color-accents;
+    color: $color-background;
+    display: inline-block;
+    text-align: center;
+    width: 20%;
+    @include modifier('title') {
+      background-color: $color-background;
+      color: $color-accents;
+      font-weight: bold;
+    }
+    @include modifier('avg') {
+      width: 50%;
+    }
+  }
+  @include element('wrapper') {
+    align-items: center;
+    display: inline-flex;
+    justify-content: space-around;
+    width: 80%;
+  }
+  @include element('name') {
+    display: inline-block;
+    text-align: center;
+    width: 80%;
+    @include modifier('avg') {
+      width: 50%;
+    }
+  }
+  @include element('btn') {
+    display: inline-block;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    text-decoration: none;
+    width: 35px;
+  }
+}
+
+.employee-list__item:nth-child(odd) {
+  background-color: lighten($color: $color-primary, $amount: 10);
+}
+
+.employee-list__item:nth-child(odd) .employee-list__id--strip {
+  background-color: lighten($color: $color-accents, $amount: 100);
 }
