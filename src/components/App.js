@@ -1,12 +1,17 @@
-import './App.scss'
+import { useEffect, useState } from 'react'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+
+import Header from './Header'
 
 function App() {
+  const [error, setError] = useState('')
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>Summa Solutions 💼</p>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Header error={error} />
+      </div>
+    </BrowserRouter>
   )
 }
 
