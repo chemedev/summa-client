@@ -21,9 +21,10 @@ const EmployeeForm = ({ employees, updateEmployee, setError, ...props }) => {
 
   if (updateEmployee) {
     const id = parseInt(props.match.params.id)
-    const [employee] = employees.filter(e => e.id === id)
-    if (employee.roleId === 1) employee.typeId = 1
-    else employee.typeId = 2
+    const [rawEmployee] = employees.filter(e => e.id === id)
+    const employee = { ...rawEmployee }
+    if (employee.roleId === 1) employee.typeId = employee.designerTypeId
+    else employee.typeId = employee.programmingLanguageId
     delete employee.designerTypeId
     delete employee.programmingLanguageId
     initialState = { ...employee }
@@ -44,8 +45,7 @@ const EmployeeForm = ({ employees, updateEmployee, setError, ...props }) => {
 
     if (name === 'roleId') setInput(state => ({ ...state, typeId: 0 }))
 
-    if (name === 'roleId' || name === 'typeId' || name === 'age')
-      value = parseInt(value)
+    if (name === 'roleId' || name === 'typeId') value = parseInt(value)
 
     setInput(state => ({ ...state, [name]: value }))
   }
@@ -115,6 +115,7 @@ const EmployeeForm = ({ employees, updateEmployee, setError, ...props }) => {
         className="form-Employee__input-text"
         type="number"
         name="age"
+        min="0"
         value={input.age}
         onChange={handleChange}
       />
