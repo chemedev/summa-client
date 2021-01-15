@@ -4,7 +4,7 @@ import Filter from './Filter'
 
 const List = ({
   employees,
-  averageAge,
+  ageAverage,
   setError,
   setEmployees,
   setAgeAverage
@@ -52,13 +52,13 @@ const List = ({
             </li>
           )
         })}
-        {averageAge && (
+        {ageAverage && (
           <li className="employee-list__item employee-list__item--avg">
             <span className="employee-list__id employee-list__id--avg">
               Edad promedio
             </span>
             <span className="employee-list__name employee-list__name--avg">
-              {averageAge}
+              {ageAverage}
             </span>
           </li>
         )}
