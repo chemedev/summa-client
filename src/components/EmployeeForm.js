@@ -1,7 +1,15 @@
 import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import fetchEmployees from '../utils/fetchEmployees'
 
-const EmployeeForm = ({ employees, updateEmployee, setError, ...props }) => {
+const EmployeeForm = ({
+  setEmployees,
+  setAgeAverage,
+  employees,
+  updateEmployee,
+  setError,
+  ...props
+}) => {
   const history = useHistory()
   const [roles, setRoles] = useState([])
 
@@ -53,14 +61,25 @@ const EmployeeForm = ({ employees, updateEmployee, setError, ...props }) => {
   const handleSubmit = async e => {
     e.preventDefault()
     const body = { ...input }
+    if (
+      body.firstName.trim() === '' ||
+      body.lastName.trim() === '' ||
+      body.age <= 0 ||
+      body.roleId === 0 ||
+      body.typeId === 0
+    ) {
+      setError('Completa todos los campos.')
+      setTimeout(() => setError(''), 2000)
+      return
+    }
     if (body.roleId === 1) body.designerTypeId = body.typeId
     else body.programmingLanguageId = body.typeId
     delete body.typeId
 
     let method = updateEmployee ? 'PUT' : 'POST'
     const url = updateEmployee
-      ? `http://localhost:3001/employees/${input.id}`
-      : 'http://localhost:3001/employees'
+      ? `${process.env.REACT_APP_API_URL}/employees/${input.id}`
+      : `${process.env.REACT_APP_API_URL}/employees`
     const options = {
       method,
       body: JSON.stringify(body),
@@ -69,6 +88,7 @@ const EmployeeForm = ({ employees, updateEmployee, setError, ...props }) => {
 
     const res = await fetch(url, options)
     if (res.ok) {
+      fetchEmployees(setError, setEmployees, setAgeAverage)
       history.push('/')
     } else {
       const data = await res.json()
@@ -79,7 +99,7 @@ const EmployeeForm = ({ employees, updateEmployee, setError, ...props }) => {
   useEffect(() => {
     const fetchRoles = async () => {
       let role = input.roleId === 1 ? 'designer' : 'developer'
-      let url = `http://localhost:3001/roles/${role}`
+      let url = `${process.env.REACT_APP_API_URL}/roles/${role}`
       const { data } = await (await fetch(url)).json()
       setRoles(data)
     }

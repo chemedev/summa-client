@@ -5,6 +5,7 @@ import List from './List'
 import Header from './Header'
 import Details from './Details'
 import EmployeeForm from './EmployeeForm'
+import fetchEmployees from '../utils/fetchEmployees'
 
 function App() {
   const [employees, setEmployees] = useState([])
@@ -12,17 +13,7 @@ function App() {
   const [ageAverage, setAgeAverage] = useState(0)
 
   useEffect(() => {
-    const fetchEmployees = async () => {
-      const url = 'http://localhost:3001/employees?'
-      const { data, error, msg } = await (await fetch(url)).json()
-      if (error) setError(msg)
-      else {
-        setError('')
-        setEmployees(data.employees)
-        setAgeAverage(data.ageAverage)
-      }
-    }
-    fetchEmployees()
+    fetchEmployees(setError, setEmployees, setAgeAverage)
   }, [])
 
   return (
@@ -39,7 +30,7 @@ function App() {
                 setError={setError}
                 setEmployees={setEmployees}
                 setAgeAverage={setAgeAverage}
-                averageAge={ageAverage}
+                ageAverage={ageAverage}
                 {...props}
               />
             )}
@@ -47,7 +38,14 @@ function App() {
           <Route
             exact
             path="/employees/:id/details"
-            render={props => <Details setError={setError} {...props} />}
+            render={props => (
+              <Details
+                setError={setError}
+                setEmployees={setEmployees}
+                setAgeAverage={setAgeAverage}
+                {...props}
+              />
+            )}
           />
           <Route
             exact
@@ -57,6 +55,8 @@ function App() {
                 employees={employees}
                 updateEmployee={true}
                 setError={setError}
+                setEmployees={setEmployees}
+                setAgeAverage={setAgeAverage}
                 {...props}
               />
             )}
@@ -67,6 +67,8 @@ function App() {
               <EmployeeForm
                 updateEmployee={false}
                 setError={setError}
+                setEmployees={setEmployees}
+                setAgeAverage={setAgeAverage}
                 {...props}
               />
             )}

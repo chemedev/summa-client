@@ -18,7 +18,7 @@ const Filter = ({ setError, setEmployees, setAgeAverage }) => {
 
   useEffect(() => {
     const fetchEmployees = async () => {
-      let url = 'http://localhost:3001/employees?'
+      let url = `${process.env.REACT_APP_API_URL}/employees?`
       if (option !== 0) {
         const query = 'roleId'
         url += `${query}=${option}`
@@ -51,7 +51,7 @@ const Filter = ({ setError, setEmployees, setAgeAverage }) => {
   useEffect(() => {
     const fetchRoles = async () => {
       let role = option === 1 ? 'designer' : 'developer'
-      let url = `http://localhost:3001/roles/${role}`
+      let url = `${process.env.REACT_APP_API_URL}/roles/${role}`
       const { data } = await (await fetch(url)).json()
       setRoles(data)
     }

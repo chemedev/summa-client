@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 
+import Error from './Error'
 import Filter from './Filter'
 
 const List = ({
@@ -9,6 +10,18 @@ const List = ({
   setEmployees,
   setAgeAverage
 }) => {
+  if (!employees[0])
+    return (
+      <>
+        <Filter
+          setError={setError}
+          setEmployees={setEmployees}
+          setAgeAverage={setAgeAverage}
+        />
+        <Error error="Sin empleados en esta categoría" />
+      </>
+    )
+
   return (
     <>
       <Filter
