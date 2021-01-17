@@ -1,7 +1,3 @@
-html {
-  box-sizing: border-box;
-}
-
 *,
 *::before,
 *::after {
@@ -10,33 +6,20 @@ html {
   user-select: none;
 }
 
+html {
+  background-color: $color-background;
+  box-sizing: border-box;
+}
+
 body {
   display: flex;
   flex-flow: column;
   margin: 0 auto;
-  min-height: 100vh;
   max-width: 640px;
-}
-
-.select {
-  appearance: none;
-  background-color: $color-accents;
-  height: 30px;
-  padding: 0 10px;
-  width: 50%;
-  &:hover {
-    background-color: darken($color: $color-accents, $amount: 3);
-  }
-}
-
-.submit {
-  height: 30px;
-  width: 50%;
 }
 
 .app {
   min-height: 100vh;
-  background-color: $color-background;
 }
 
 .app-Header {
@@ -49,53 +32,11 @@ body {
   justify-content: center;
 }
 
-.error {
-  background-color: $color-errors;
-  color: $color-accents;
-  font-weight: bold;
-  height: 30px;
-  line-height: 30px;
-  margin: 0 auto 5px auto;
-  opacity: 0;
-  text-align: center;
-  transition: 0.3s ease;
-  width: 95%;
-  @include modifier('show') {
-    opacity: 1;
-  }
-}
-
-.btn {
-  cursor: pointer;
-  text-decoration: none;
-  @include element('home') {
-    color: $color-accents;
-    font-size: 2em;
-    font-weight: bold;
-    margin: 0.67em 0;
-  }
-  @include element('employees') {
-    background-color: $color-primary;
-    color: $color-accents;
-    display: block;
-    margin: 0 auto 5px auto;
-    padding: 5px 0;
-    text-align: center;
-    width: 95%;
-    &:hover {
-      background-color: lighten($color: $color-primary, $amount: 10);
-    }
-  }
-  @include modifier('active') {
-    background-color: saturate($color: $color-primary, $amount: 50);
-  }
-}
-
 .form-Filter {
   background-color: $color-primary;
   color: $color-accents;
   display: block;
-  margin: 0 auto;
+  margin: 0 auto 5px auto;
   padding: 5px;
   width: 95%;
   @include element('container') {
@@ -202,17 +143,17 @@ body {
     line-height: 30px;
     margin: 10px auto 0 auto;
     padding-left: 3px;
-    width: 50%;
+    width: 75%;
   }
   @include element('input-text') {
     display: block;
     margin: 0 auto;
-    width: 50%;
+    width: 75%;
   }
   @include element('wrapper') {
     display: flex;
     margin: 0 auto;
-    width: 50%;
+    width: 75%;
   }
   @include element('radio') {
     background-color: $color-accents;
@@ -221,16 +162,18 @@ body {
     line-height: 30px;
     margin: 0 auto;
     text-align: center;
-    width: 50%;
+    width: 75%;
   }
   @include element('select') {
     display: block;
     margin: 0 auto;
+    width: 75%;
   }
   @include element('submit') {
     display: block;
     font-weight: bold;
     margin: 5em auto 0 auto;
+    width: 75%;
   }
 }
 
@@ -248,7 +191,7 @@ input[type='radio']:checked + .form-Employee__radio {
   border-radius: 4px;
   color: $color-accents;
   margin: 0 auto;
-  padding: 10px 20px;
+  padding: 20px;
   width: 60%;
   @include element('title') {
     font-size: 1.5em;
@@ -259,46 +202,53 @@ input[type='radio']:checked + .form-Employee__radio {
     margin: 0;
     margin-bottom: 10px;
   }
-}
-
-.spinner {
-  animation: spin 1s linear infinite;
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left-color: #09f;
-  border-radius: 50%;
-  height: 36px;
-  margin: 3em auto;
-  width: 36px;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
+  input {
+    display: block;
+    margin: 30px 0 0 auto;
   }
 }
 
-@media (max-width: 640px) {
+@media (min-width: 640px) {
+  body {
+    max-width: 1600px;
+  }
+
+  .app-Header {
+    margin: 2em auto 0 auto;
+    width: 70%;
+  }
+
+  .form-Filter {
+    width: 70%;
+  }
+
+  .form-Filter + .error {
+    width: 70%;
+  }
+
+  .employee-list {
+    width: 70%;
+  }
+
   .form-Employee {
+    width: 70%;
     @include element('label') {
-      width: 75%;
+      width: 70%;
     }
     @include element('input-text') {
-      width: 75%;
+      width: 70%;
     }
     @include element('wrapper') {
-      width: 75%;
+      width: 70%;
     }
     @include element('radio') {
-      width: 75%;
+      width: 70%;
     }
     @include element('select') {
-      width: 75%;
+      width: 70%;
     }
     @include element('submit') {
-      width: 75%;
+      width: 50%;
     }
   }
 }

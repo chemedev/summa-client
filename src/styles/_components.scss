@@ -1,0 +1,89 @@
+.select {
+  appearance: none;
+  background-color: $color-accents;
+  height: 30px;
+  padding: 0 10px;
+  width: 50%;
+  &:hover {
+    background-color: darken($color: $color-accents, $amount: 3);
+  }
+}
+
+.submit {
+  height: 30px;
+  width: 50%;
+}
+
+.btn {
+  cursor: pointer;
+  text-decoration: none;
+  @include element('home') {
+    color: $color-accents;
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0.67em 0;
+  }
+  @include element('employees') {
+    background-color: $color-primary;
+    color: $color-accents;
+    display: block;
+    margin: 0 auto 5px auto;
+    padding: 5px 0;
+    text-align: center;
+    width: 95%;
+    &:hover {
+      background-color: lighten($color: $color-primary, $amount: 10);
+    }
+  }
+  @include modifier('active') {
+    background-color: saturate($color: $color-primary, $amount: 50);
+  }
+}
+
+.error {
+  background-color: $color-errors;
+  color: $color-accents;
+  font-size: medium;
+  font-weight: bold;
+  height: 30px;
+  line-height: 30px;
+  margin: 0 auto 5px auto;
+  opacity: 0;
+  text-align: center;
+  transition: 0.3s ease;
+  width: 95%;
+  @include modifier('show') {
+    opacity: 1;
+  }
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #09f;
+  border-radius: 50%;
+  height: 36px;
+  margin: 3em auto;
+  width: 36px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (min-width: 640px) {
+  .error {
+    width: 100%;
+  }
+
+  .btn {
+    @include element('employees') {
+      width: 100%;
+    }
+  }
+}
